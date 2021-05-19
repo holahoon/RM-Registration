@@ -40,3 +40,5 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 [create-react-app with TypeScript](https://create-react-app.dev/docs/adding-typescript/) - basic SPA setup using CRA + TypeScript to better typing.
 [Formik](https://formik.org/docs/overview) - to easily control forms.
+[yup]() - for better validation process when using Formik
+[react-datepicker](https://github.com/Hacker0x01/react-datepicker) - easier date picker

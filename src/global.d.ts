@@ -3,12 +3,6 @@ interface Name {
   last: string;
 }
 
-interface DOB {
-  month: string;
-  day: string;
-  year: string;
-}
-
 interface Login {
   email: string;
   password: string;
@@ -16,5 +10,5 @@ interface Login {
 
 interface SignUp extends Login {
   name: Name;
-  dob: DOB;
+  dob: string;
 }
