@@ -1,10 +1,19 @@
+import { ReactNode } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Login from 'pages/auth/login';
 
-export default function MainRouter() {
+type PropTypes = {
+  children: ReactNode;
+};
+
+export default function MainRouter(props: PropTypes) {
+  const { children } = props;
+
   return (
     <Router>
+      {children}
+
       <Switch>
         <Route path='/login'>
           <Login />

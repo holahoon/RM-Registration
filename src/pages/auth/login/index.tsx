@@ -1,4 +1,15 @@
-import { Formik, Field, Form, useFormik } from 'formik';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+
+import { passwordRegex, passWordErrorMsg } from 'utils/constants';
+
+const yupValidationSchema = Yup.object({
+  email: Yup.string().email('Invalid email address').required('Email is required'),
+  password: Yup.string()
+    .min(8, passWordErrorMsg.minimum)
+    .matches(passwordRegex, passWordErrorMsg.contain)
+    .required('Password is required'),
+});
 
 export default function Login() {
   const formik = useFormik({
@@ -6,21 +17,50 @@ export default function Login() {
       email: '',
       password: '',
     },
+    validationSchema: yupValidationSchema,
     onSubmit: (values: LoginInterface) => {
-      alert(JSON.stringify(values, null, 2));
+      onSubmitHndlr(values);
     },
   });
 
-  const onSubmitHndlr = () => {};
+  const onSubmitHndlr = (values: LoginInterface) => {
+    alert(JSON.stringify(values, null, 2));
+  };
 
   console.log(formik);
   return (
     <div>
       <h2>Login</h2>
 
-      <form>
-        <label htmlFor='email'>Email</label>
-        <input id='email' />
+      <form onSubmit={formik.handleSubmit}>
+        <div>
+          <label htmlFor='email'>Email</label>
+          <input
+            id='email'
+            type='text'
+            name='email'
+            placeholder='email'
+            value={formik.values.email}
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+          />
+          {formik.touched.email && formik.errors.email ? <span>{formik.errors.email}</span> : null}
+        </div>
+
+        <div>
+          <label htmlFor='password'>Password</label>
+          <input
+            id='password'
+            type='password'
+            name='password'
+            placeholder='password'
+            value={formik.values.password}
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+          />
+          {formik.touched.password && formik.errors.password ? <span>{formik.errors.password}</span> : null}
+        </div>
+        <button type='submit'>Login</button>
       </form>
     </div>
   );

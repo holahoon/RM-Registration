@@ -1,5 +1,18 @@
+import { Link } from 'react-router-dom';
+import MainRouter from 'components/router/Router';
+
 function App() {
-  return <div>Remnant Ministry Registration</div>;
+  return (
+    <div>
+      <h2>Remnant Ministry Registration</h2>
+
+      <MainRouter>
+        <button>
+          <Link to='/login'>Login</Link>
+        </button>
+      </MainRouter>
+    </div>
+  );
 }
 
 export default App;
