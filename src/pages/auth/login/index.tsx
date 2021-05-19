@@ -18,12 +18,12 @@ export default function Login() {
       password: '',
     },
     validationSchema: yupValidationSchema,
-    onSubmit: (values: LoginInterface) => {
+    onSubmit: (values: Login) => {
       onSubmitHndlr(values);
     },
   });
 
-  const onSubmitHndlr = (values: LoginInterface) => {
+  const onSubmitHndlr = (values: Login) => {
     alert(JSON.stringify(values, null, 2));
   };
 
@@ -49,15 +49,7 @@ export default function Login() {
 
         <div>
           <label htmlFor='password'>Password</label>
-          <input
-            id='password'
-            type='password'
-            name='password'
-            placeholder='password'
-            value={formik.values.password}
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-          />
+          <input id='password' type='password' {...formik.getFieldProps('password')} />
           {formik.touched.password && formik.errors.password ? <span>{formik.errors.password}</span> : null}
         </div>
         <button type='submit'>Login</button>
