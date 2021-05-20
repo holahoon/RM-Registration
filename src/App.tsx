@@ -10,6 +10,9 @@ function App() {
         <button>
           <Link to='/login'>Login</Link>
         </button>
+        <button>
+          <Link to='/signup'>Signup</Link>
+        </button>
       </MainRouter>
     </div>
   );

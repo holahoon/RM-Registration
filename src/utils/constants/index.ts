@@ -11,3 +11,34 @@ export const passWordErrorMsg = {
 };
 
 export const nameErrorMsg = 'Please enter a valid name';
+
+export const INPUT_DATA: {
+  type: string;
+  id: string;
+  name: string;
+  label: string;
+  placeholder: string;
+}[] = [
+  { type: 'email', id: 'email', name: 'email', label: 'email', placeholder: 'email' },
+  {
+    type: 'password',
+    id: 'password',
+    name: 'password',
+    label: 'password',
+    placeholder: '********',
+  },
+  {
+    type: 'text',
+    id: 'firstName',
+    name: 'name.firstName',
+    label: 'first name',
+    placeholder: 'John',
+  },
+  {
+    type: 'text',
+    id: 'lastName',
+    name: 'name.lastName',
+    label: 'last name',
+    placeholder: 'Doe',
+  },
+];

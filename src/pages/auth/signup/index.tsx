@@ -3,6 +3,8 @@ import * as Yup from 'yup';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+import TextInput from 'components/forms/TextInput';
+
 //https://reactdatepicker.com/#example-year-dropdown
 
 import {
@@ -12,6 +14,7 @@ import {
   yearRegex,
   passWordErrorMsg,
   nameErrorMsg,
+  INPUT_DATA,
 } from 'utils/constants';
 // import { generateNumbers } from 'utils/fns';
 
@@ -36,7 +39,7 @@ export default function Signup() {
       firstName: '',
       lastName: '',
     },
-    dob: null,
+    dob: new Date(),
   };
 
   const onSubmitHndlr = (values: any) => {
@@ -53,68 +56,13 @@ export default function Signup() {
         // validationSchema={yupValidationSchema}
         onSubmit={(values) => onSubmitHndlr(values)}>
         {(props) => {
-          const {
-            values,
-            touched,
-            errors,
-            dirty,
-            isSubmitting,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            handleReset,
-            setFieldValue,
-          } = props;
+          const { values, isSubmitting, handleSubmit, handleReset, setFieldValue } = props;
           return (
-            <form onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor='email'>Email</label>
-                <input
-                  id='email'
-                  name='email'
-                  type='text'
-                  placeholder='email'
-                  value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-              </div>
-              <div>
-                <label htmlFor='password'>Password</label>
-                <input
-                  id='password'
-                  name='password'
-                  type='password'
-                  placeholder='password'
-                  value={values.password}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-              </div>
-              <div>
-                <label htmlFor='firstName'>First name</label>
-                <input
-                  id='firstName'
-                  name='name.firstName'
-                  type='text'
-                  placeholder='First name'
-                  value={values.name.firstName}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-              </div>
-              <div>
-                <label htmlFor='lastName'>Last name</label>
-                <input
-                  id='lastName'
-                  name='name.lastName'
-                  type='text'
-                  placeholder='Last name'
-                  value={values.name.lastName}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-              </div>
+            <Form onSubmit={handleSubmit}>
+              {INPUT_DATA.map((data, idx) => (
+                <TextInput key={`${data.id}-${idx}`} {...data} />
+              ))}
+
               <div>
                 <DatePicker
                   name='dob'
@@ -130,7 +78,7 @@ export default function Signup() {
               <div>
                 <button type='submit'>Submit</button>
               </div>
-            </form>
+            </Form>
           );
         }}
       </Formik>
