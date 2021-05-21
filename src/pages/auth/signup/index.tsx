@@ -40,6 +40,7 @@ export default function Signup() {
       lastName: '',
     },
     dob: new Date(),
+    phoneNum: '',
   };
 
   const onSubmitHndlr = (values: any) => {
@@ -60,7 +61,7 @@ export default function Signup() {
           return (
             <Form onSubmit={handleSubmit}>
               {INPUT_DATA.map((data, idx) => (
-                <TextInput key={`${data.id}-${idx}`} {...data} />
+                <TextInput key={`${data.id}-${idx}`} {...data} setFieldValue={setFieldValue} />
               ))}
 
               <div>

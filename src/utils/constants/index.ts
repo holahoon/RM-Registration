@@ -18,14 +18,23 @@ export const INPUT_DATA: {
   name: string;
   label: string;
   placeholder: string;
+  customFormat: boolean;
 }[] = [
-  { type: 'email', id: 'email', name: 'email', label: 'email', placeholder: 'email' },
+  {
+    type: 'email',
+    id: 'email',
+    name: 'email',
+    label: 'email',
+    placeholder: 'email',
+    customFormat: false,
+  },
   {
     type: 'password',
     id: 'password',
     name: 'password',
     label: 'password',
     placeholder: '********',
+    customFormat: false,
   },
   {
     type: 'text',
@@ -33,6 +42,7 @@ export const INPUT_DATA: {
     name: 'name.firstName',
     label: 'first name',
     placeholder: 'John',
+    customFormat: false,
   },
   {
     type: 'text',
@@ -40,5 +50,14 @@ export const INPUT_DATA: {
     name: 'name.lastName',
     label: 'last name',
     placeholder: 'Doe',
+    customFormat: false,
+  },
+  {
+    type: 'text',
+    id: 'phoneNum',
+    name: 'phoneNum',
+    label: 'Phone',
+    placeholder: '(000) 000-0000',
+    customFormat: true,
   },
 ];

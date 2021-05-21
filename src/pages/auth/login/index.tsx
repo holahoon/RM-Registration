@@ -27,7 +27,6 @@ export default function Login() {
     alert(JSON.stringify(values, null, 2));
   };
 
-  console.log(formik);
   return (
     <div>
       <h2>Login</h2>
@@ -50,7 +49,9 @@ export default function Login() {
         <div>
           <label htmlFor='password'>Password</label>
           <input id='password' type='password' {...formik.getFieldProps('password')} />
-          {formik.touched.password && formik.errors.password ? <span>{formik.errors.password}</span> : null}
+          {formik.touched.password && formik.errors.password ? (
+            <span>{formik.errors.password}</span>
+          ) : null}
         </div>
         <button type='submit'>Login</button>
       </form>
