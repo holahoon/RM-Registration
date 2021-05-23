@@ -12,7 +12,7 @@ export const passWordErrorMsg = {
 
 export const nameErrorMsg = 'Please enter a valid name';
 
-export const INPUT_DATA: {
+export const SIGN_UP_DATA: {
   type: string;
   id: string;
   name: string;
@@ -54,10 +54,29 @@ export const INPUT_DATA: {
   },
   {
     type: 'text',
+    id: 'dob',
+    name: 'dob',
+    label: 'date of birth',
+    placeholder: 'MM/DD/YYYY',
+    customFormat: true,
+  },
+  {
+    type: 'text',
     id: 'phoneNum',
     name: 'phoneNum',
     label: 'Phone',
-    placeholder: '(000) 000-0000',
+    placeholder: '000-000-0000',
     customFormat: true,
+  },
+];
+
+export const SIGN_UP_SELECT: { label: string; value: string }[] = [
+  {
+    label: 'male',
+    value: 'm',
+  },
+  {
+    label: 'female',
+    value: 'f',
   },
 ];

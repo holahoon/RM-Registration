@@ -3,7 +3,8 @@ import * as Yup from 'yup';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import TextInput from 'components/forms/TextInput';
+import FormInput from 'components/forms/FormInput';
+import FormSelect from 'components/forms/FormSelect';
 
 //https://reactdatepicker.com/#example-year-dropdown
 
@@ -14,9 +15,9 @@ import {
   yearRegex,
   passWordErrorMsg,
   nameErrorMsg,
-  INPUT_DATA,
+  SIGN_UP_DATA,
+  SIGN_UP_SELECT,
 } from 'utils/constants';
-// import { generateNumbers } from 'utils/fns';
 
 const yupValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email address').required('Email is required'),
@@ -39,8 +40,10 @@ export default function Signup() {
       firstName: '',
       lastName: '',
     },
-    dob: new Date(),
+    // dob: new Date(),
+    dob: '',
     phoneNum: '',
+    gender: '',
   };
 
   const onSubmitHndlr = (values: any) => {
@@ -60,11 +63,18 @@ export default function Signup() {
           const { values, isSubmitting, handleSubmit, handleReset, setFieldValue } = props;
           return (
             <Form onSubmit={handleSubmit}>
-              {INPUT_DATA.map((data, idx) => (
-                <TextInput key={`${data.id}-${idx}`} {...data} setFieldValue={setFieldValue} />
+              {SIGN_UP_DATA.map((data, idx) => (
+                <FormInput key={`${data.id}-${idx}`} {...data} setFieldValue={setFieldValue} />
               ))}
 
-              <div>
+              <FormSelect
+                optionsList={SIGN_UP_SELECT}
+                id='gender'
+                name='gender'
+                label='Select gender'
+              />
+
+              {/* <div>
                 <DatePicker
                   name='dob'
                   selected={values.dob}
@@ -74,7 +84,7 @@ export default function Signup() {
                   dropdownMode='select'
                   onChange={(value) => setFieldValue('dob', value)}
                 />
-              </div>
+              </div> */}
 
               <div>
                 <button type='submit'>Submit</button>
